@@ -9,6 +9,7 @@ namespace Q4CsvParser.CompositionRoot
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<CsvFileHandler>().As<ICsvFileHandler>();
             builder.RegisterType<ParsingService>().As<IParsingService>();
             builder.RegisterType<ValidationService>().As<IValidationService>();
             builder.RegisterType<FileService>().As<IFileService>();

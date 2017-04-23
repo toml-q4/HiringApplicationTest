@@ -7,6 +7,7 @@ namespace Q4CsvParser.Core
     /// This file does not need to be unit testable.
     /// Bonus Marks:
     /// - Make this file unit testable using the adapter pattern for your file system interactions
+    /// - Unit test this file
     /// </summary>
     public class FileService : IFileService
     {

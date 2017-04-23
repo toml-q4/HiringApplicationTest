@@ -4,6 +4,10 @@ using Q4CsvParser.Domain;
 
 namespace Q4CsvParser.Core
 {
+    /// <summary>
+    /// This file does not need to be unit tested. 
+    /// For bonus marks, it can be integration tested in the project Q4CsvParser.Core.Test.Integration.
+    /// </summary>
     public class CsvFileHandler : ICsvFileHandler
     {
         private readonly IParsingService _parsingService;

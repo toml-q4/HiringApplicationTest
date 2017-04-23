@@ -8,6 +8,9 @@ using Q4CsvParser.Models;
 
 namespace Q4CsvParser.Controllers
 {
+    /// <summary>
+    /// This file does not need to be unit tested. You shouldn't need to modify this.
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ICsvFileHandler _csvFileHandler;

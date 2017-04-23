@@ -13,6 +13,10 @@ namespace Q4CsvParser.Domain
             Rows = new List<CsvRow>();
         }
 
+        /// <summary>
+        /// This is provided to make unit testing easier. Now you can create the object and then ToString it.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();

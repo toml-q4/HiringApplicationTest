@@ -7,17 +7,17 @@
         We have a customer who wants to create a web based CSV visualization application.
     <h3>Acceptance criteria</h3>
     <ul>
-        <li>As a User I should be able to upload a CSV file with or without a header.</li>
-        <li>As a User I should be able to upload a CSV file with a variable number of columns and data types.</li>
-        <li>As a User I should be able to see the CSV file content on the web page in a formatted view.</li>
+        <li>As a user I should be able to upload a CSV file with or without a header.</li>
+        <li>As a user I should be able to upload a CSV file with a variable number of columns and data types.</li>
+        <li>As a user I should be able to see the CSV file content on the web page in a formatted view.</li>
     </ul>
     <h3>Additional Details</h3>
     <ul>
-        <li>You may not use any 3rd party code other than what we've given you.</li>
-        <li>Feel free to create as many helper functions as you desire. You can add helper classes as well, but if you do they are expected to be unit tested.</li>
+        <li>You may not use any 3rd party code other than what we've given you (or is specified in comments).</li>
+        <li>Feel free to create as many helper functions as you desire. You can add helper classes as well, but if you do they are expected to be unit tested (or at the very least, unit-testable).</li>
         <li>The contracts layer should remain the same. If you fundamentally disagree with how we've scaffolded the application you may change the contract layer, but you will need to justify that decision to us.</li>
-        <li>You may find ways to earn bonus marks in comments throughout the code. If the base application doesn't work, bonus marks don't apply so get it working first.</li>
         <li>You can find CSV files in the folder TestCsvFiles. We'll be using these and a few others for testing the application. We weren't super careful about making sure the files were uniform or used the correct line endings. (oops)</li>
+        <li>You are required to unit test the parsing and validation logic.</li>
     </ul>
     <h3>Files To Be Updated</h3>
     <ul>
@@ -28,9 +28,19 @@
         <li>Q4CsvParser.Core.Test/ParsingServiceTest.cs</li>
         <li>Q4CsvParser.Core.Test/ValidationServiceTest.cs</li>
     </ul>
+    <h3>Bonus Tasks</h3>
+    <div>
+        There are several ways to earn bonus marks. There's no penalty to not completing bonus marks, but if your base requirements are not met, they are worth nothing.
+        <br/>
+        The tasks are detailed in the files they relate to. You can find bonus tasks in the following files:
+    </div>
+    <ul>
+        <li>Q4CsvParser.Core/FileService</li>
+        <li>Q4CsvParser.Core.Test.Integration/CsvFileHandlerTest</li>
+    </ul>
     <h3>Hard Mode (For Over-Achievers only)</h3>
     <div>
-        Create a new page that lists all the uploaded files and lets you click on one to show the formatted display.
+        Create a new page that lists all the uploaded files and lets you click on them to show the formatted display.
         <br />
         Make sure that your base application meets all criteria before trying this. If you don't finish this part, your base application should be fully functional.
     </div>

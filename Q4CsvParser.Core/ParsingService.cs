@@ -4,6 +4,9 @@ using Q4CsvParser.Domain;
 
 namespace Q4CsvParser.Core
 {
+    /// <summary>
+    /// This file must be unit tested.
+    /// </summary>
     public class ParsingService : IParsingService
     {
         public CsvTable ParseCsv(string fileContent)
