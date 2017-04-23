@@ -1,0 +1,40 @@
+﻿@model Q4CsvParser.Models.FormattedDisplayModel
+
+@{
+    ViewBag.Title = "Formatted Display";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Data from <strong>@Model.OriginalFileName</strong></h2>
+
+<table class="table table-condensed table-hover table-stripped">
+    @if (Model.HasHeader())
+    {
+        <thead>
+        <tr>
+            @foreach (var value in Model.CsvTable.HeaderRow.Columns)
+            {
+                <th>@value</th>
+            }
+        </tr>
+        </thead>
+    }
+    @if (Model.HasBody())
+    {
+        <tbody>
+        @foreach (var field in Model.CsvTable.Rows)
+        {
+            <tr>
+                @foreach (var value in field.Columns)
+                {
+                    <td>@value</td>
+                }
+            </tr>
+        }
+        </tbody>
+    }
+</table>
+@if (!Model.HasHeader() && !Model.HasBody())
+{
+    <div>This CSV File has no head or body</div>
+}
