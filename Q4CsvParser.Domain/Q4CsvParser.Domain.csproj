@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvColumn.cs" />
+    <Compile Include="CsvHandleResult.cs" />
     <Compile Include="CsvRow.cs" />
     <Compile Include="CsvTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

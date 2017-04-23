@@ -10,17 +10,12 @@ namespace Q4CsvParser.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IParsingService _parsingService;
-        private readonly IValidationService _validationService;
-        private readonly IFileService _fileService;
+        private readonly ICsvFileHandler _csvFileHandler;
         private readonly ILog _logger;
 
-        public HomeController(IParsingService parsingService, IValidationService validationService,
-            IFileService fileService, ILog logger)
+        public HomeController(ICsvFileHandler csvFileHandler, ILog logger)
         {
-            _parsingService = parsingService;
-            _validationService = validationService;
-            _fileService = fileService;
+            _csvFileHandler = csvFileHandler;
             _logger = logger;
         }
 
@@ -60,23 +55,11 @@ namespace Q4CsvParser.Controllers
             if (file == null || file.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            if (!_validationService.IsCsvFile(file.FileName))
-                return HandleError(
-                    $"Selected file, {file.FileName}, does not have supported format CSV. Nothing has been uploaded");
+            var result = _csvFileHandler.ParseCsvFile(file.InputStream, file.FileName);
+            if (!result.Success)
+                return HandleError(result.ErrorMessage);
 
-            var uploadedFilePath = _fileService.StoreFile(file.InputStream, file.FileName);
-            if (string.IsNullOrWhiteSpace(uploadedFilePath))
-                return HandleError("File failed to save to server");
-
-            var fileContent = _fileService.ReadFile(uploadedFilePath);
-            if (string.IsNullOrWhiteSpace(fileContent))
-                return HandleError("File had no content");
-
-            var parsedFileContent = _parsingService.ParseCsv(fileContent);
-            if (parsedFileContent == null)
-                return HandleError("Failed to parse file content");
-
-            return RedirectToAction("FormattedDisplay", new {parsedFileContent, file.FileName});
+            return RedirectToAction("FormattedDisplay", new {result.ParsedCsvContent, file.FileName});
         }
 
         #endregion
