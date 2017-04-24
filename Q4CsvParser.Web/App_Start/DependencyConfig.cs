@@ -2,9 +2,9 @@
 using Autofac;
 using Autofac.Integration.Mvc;
 using Q4CsvParser.CompositionRoot;
-using Q4CsvParser.Controllers;
+using Q4CsvParser.Web.Controllers;
 
-namespace Q4CsvParser.App_Start
+namespace Q4CsvParser.Web
 {
     public static class DependencyConfig
     {

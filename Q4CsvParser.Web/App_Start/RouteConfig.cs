@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Q4CsvParser
+namespace Q4CsvParser.Web
 {
     public class RouteConfig
     {

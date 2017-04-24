@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Q4CsvParser
+namespace Q4CsvParser.Web
 {
     public static class WebApiConfig
     {

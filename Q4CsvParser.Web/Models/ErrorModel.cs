@@ -1,4 +1,4 @@
-﻿namespace Q4CsvParser.Models
+﻿namespace Q4CsvParser.Web.Models
 {
     public class ErrorModel
     {

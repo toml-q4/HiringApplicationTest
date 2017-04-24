@@ -4,9 +4,9 @@ using System.Web.Mvc;
 using log4net;
 using Q4CsvParser.Core.Contracts;
 using Q4CsvParser.Domain;
-using Q4CsvParser.Models;
+using Q4CsvParser.Web.Models;
 
-namespace Q4CsvParser.Controllers
+namespace Q4CsvParser.Web.Controllers
 {
     /// <summary>
     /// This file does not need to be unit tested. You shouldn't need to modify this.

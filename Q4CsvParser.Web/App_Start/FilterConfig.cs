@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Q4CsvParser
+namespace Q4CsvParser.Web
 {
     public class FilterConfig
     {

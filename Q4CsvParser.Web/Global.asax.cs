@@ -3,9 +3,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using log4net.Config;
-using Q4CsvParser.App_Start;
 
-namespace Q4CsvParser
+namespace Q4CsvParser.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

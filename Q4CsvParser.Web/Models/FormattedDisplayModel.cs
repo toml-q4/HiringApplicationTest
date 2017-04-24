@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Q4CsvParser.Domain;
 
-namespace Q4CsvParser.Models
+namespace Q4CsvParser.Web.Models
 {
     public class FormattedDisplayModel
     {
