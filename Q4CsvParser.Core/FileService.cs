@@ -22,7 +22,7 @@ namespace Q4CsvParser.Core
         public string StoreFile(Stream inputStream, string fileName)
         {
             //TODO fill in your logic here
-            return null;
+            throw new System.NotImplementedException();
         }
 
         /// <summary>

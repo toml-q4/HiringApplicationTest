@@ -30,10 +30,7 @@ namespace Q4CsvParser.Core
         /// <returns></returns>
         public CsvHandleResult ParseCsvFile(Stream inputStream, string fileName)
         {
-            var result = new CsvHandleResult
-            {
-                Success = false
-            };
+            var result = new CsvHandleResult();
 
             if (!_validationService.IsCsvFile(fileName))
             {
