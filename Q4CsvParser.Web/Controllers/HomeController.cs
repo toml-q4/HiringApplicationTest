@@ -62,7 +62,6 @@ namespace Q4CsvParser.Web.Controllers
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file)
         {
-            // Bonus: Client-side validation before POSTing back.
             if (file == null || file.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
