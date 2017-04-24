@@ -22,6 +22,12 @@ namespace Q4CsvParser.Core
             _fileService = fileService;
         }
 
+        /// <summary>
+        /// Takes in an input stream from HttpPostedFileBase and returns a parsed CsvTable object
+        /// </summary>
+        /// <param name="inputStream"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public CsvHandleResult ParseCsvFile(Stream inputStream, string fileName)
         {
             var result = new CsvHandleResult

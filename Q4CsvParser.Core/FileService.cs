@@ -13,16 +13,28 @@ namespace Q4CsvParser.Core
     {
         private const string UploadFilePath = "~/App_Data/uploads";
 
-        public string ReadFile(string filePath)
-        {
-            //TODO fill in your logic here
-            throw new System.NotImplementedException();
-        }
-
+        /// <summary>
+        /// This file takes the inputStream and file name from the HttpPostedFileBase and save the file to the appData folder
+        /// </summary>
+        /// <param name="inputStream"></param>
+        /// <param name="fileName"></param>
+        /// <returns>The file path in the appData folder the file was saved to</returns>
         public string StoreFile(Stream inputStream, string fileName)
         {
             //TODO fill in your logic here
             return null;
+        }
+
+        /// <summary>
+        /// This function takes in the filePath of a csv file stored in the app data folder and return the string content
+        /// of that file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns>The contents of the file in a string</returns>
+        public string ReadFile(string filePath)
+        {
+            //TODO fill in your logic here
+            throw new System.NotImplementedException();
         }
     }
 }
