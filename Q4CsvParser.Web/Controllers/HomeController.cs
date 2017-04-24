@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using log4net;
+using Q4CsvParser.Core;
 using Q4CsvParser.Core.Contracts;
 using Q4CsvParser.Domain;
 using Q4CsvParser.Web.Models;
@@ -10,16 +11,22 @@ namespace Q4CsvParser.Web.Controllers
 {
     /// <summary>
     /// This file does not need to be unit tested. You shouldn't need to modify this.
+    /// Bonus Task:
+    /// Use your favourite dependency injection framework (i.e. Autofac, Ninject) to inject all the services.
+    /// This project uses MVC5 so make sure you grab the right implementation. 
+    /// Bonus Task:
+    /// Validate the input to the post function on the client side. You can use javascript or Razor syntax, 
+    ///  but don't use any 3rd party code for this.
     /// </summary>
     public class HomeController : Controller
     {
         private readonly ICsvFileHandler _csvFileHandler;
         private readonly ILog _logger;
 
-        public HomeController(ICsvFileHandler csvFileHandler, ILog logger)
+        public HomeController()
         {
-            _csvFileHandler = csvFileHandler;
-            _logger = logger;
+            _csvFileHandler = new CsvFileHandler(new ParsingService(), new ValidationService(), new FileService());
+            _logger = LogManager.GetLogger("MvcApplication");
         }
 
         #region [ GETs ]

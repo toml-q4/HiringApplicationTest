@@ -47,14 +47,6 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -154,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -230,13 +221,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Q4CsvParser.CompositionRoot\Q4CsvParser.CompositionRoot.csproj">
-      <Project>{4b6515b7-95e9-45b1-87f1-bd5fae9554ec}</Project>
-      <Name>Q4CsvParser.CompositionRoot</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Q4CsvParser.Core.Contracts\Q4CsvParser.Core.Contracts.csproj">
       <Project>{d5bc0f27-d62e-4523-b47b-673140ffafb9}</Project>
       <Name>Q4CsvParser.Core.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Q4CsvParser.Core\Q4CsvParser.Core.csproj">
+      <Project>{6b3dc754-627a-49cb-8c07-4fb58bb0669b}</Project>
+      <Name>Q4CsvParser.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Q4CsvParser.Domain\Q4CsvParser.Domain.csproj">
       <Project>{1ad6f9ce-f1ea-4ae1-90e3-a8031767b76f}</Project>

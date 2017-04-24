@@ -1,7 +1,7 @@
 ﻿namespace Q4CsvParser.Core.Test.Integration
 {
     /// <summary>
-    /// Bonus Marks:
+    /// Bonus Task:
     /// We've provided a few testing files. Integration test the csv file handler using these files.
     /// Feel free to use any testing framework you desire. (i.e. NUnit, XUnit, Microsoft built-in testing framework)
     /// </summary>
