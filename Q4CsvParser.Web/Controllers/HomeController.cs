@@ -60,16 +60,18 @@ namespace Q4CsvParser.Web.Controllers
 
         #region [ POSTs ]
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
+        public ActionResult Index(FileUploadModel fileUploadModel)
         {
-            if (file == null || file.ContentLength <= 0)
+            if (fileUploadModel?.File == null || fileUploadModel.File.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            var result = _csvFileHandler.ParseCsvFile(file.InputStream, file.FileName);
+            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File.InputStream, fileUploadModel.File.FileName,
+                fileUploadModel.ContainsHeader);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
 
-            return RedirectToAction("FormattedDisplay", new {result.ParsedCsvContent, file.FileName});
+            return RedirectToAction("FormattedDisplay",
+                new {result.ParsedCsvContent, fileUploadModel.File.FileName});
         }
 
         #endregion

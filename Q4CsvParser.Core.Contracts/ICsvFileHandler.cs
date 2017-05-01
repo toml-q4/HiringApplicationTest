@@ -10,7 +10,8 @@ namespace Q4CsvParser.Core.Contracts
         /// </summary>
         /// <param name="inputStream"></param>
         /// <param name="fileName"></param>
+        /// <param name="containsHeader"></param>
         /// <returns></returns>
-        CsvHandleResult ParseCsvFile(Stream inputStream, string fileName);
+        CsvHandleResult ParseCsvFile(Stream inputStream, string fileName, bool containsHeader);
     }
 }
