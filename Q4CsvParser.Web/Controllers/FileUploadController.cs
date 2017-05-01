@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using log4net;
+﻿using log4net;
 using Q4CsvParser.Core;
 using Q4CsvParser.Core.Contracts;
 using Q4CsvParser.Domain;
 using Q4CsvParser.Web.Models;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Q4CsvParser.Web.Controllers
 {
@@ -18,18 +17,17 @@ namespace Q4CsvParser.Web.Controllers
     /// Validate the input to the post function on the client side. You can use javascript or Razor syntax, 
     ///  but don't use any 3rd party code for this.
     /// </summary>
-    public class HomeController : Controller
+    public class FileUploadController : Controller
     {
         private readonly ICsvFileHandler _csvFileHandler;
         private readonly ILog _logger;
 
-        public HomeController()
+        public FileUploadController()
         {
             _csvFileHandler = new CsvFileHandler(new ParsingService(), new ValidationService(), new FileService());
             _logger = LogManager.GetLogger("MvcApplication");
         }
 
-        #region [ GETs ]
         public ActionResult Index()
         {
             return View();
@@ -37,7 +35,7 @@ namespace Q4CsvParser.Web.Controllers
 
         public ActionResult Error(string errorMessage)
         {
-            var model = new ErrorModel { ErrorMessage = errorMessage};
+            var model = new ErrorModel { ErrorMessage = errorMessage };
             return View(model);
         }
 
@@ -56,32 +54,24 @@ namespace Q4CsvParser.Web.Controllers
 
             return View(model);
         }
-        #endregion
 
-        #region [ POSTs ]
         [HttpPost]
-        public ActionResult Index(FileUploadModel fileUploadModel)
+        public ActionResult Index(HttpPostedFileBase file)
         {
-            if (fileUploadModel?.File == null || fileUploadModel.File.ContentLength <= 0)
+            if (file == null || file.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File.InputStream, fileUploadModel.File.FileName,
-                fileUploadModel.ContainsHeader);
+            var result = _csvFileHandler.ParseCsvFile(file.InputStream, file.FileName);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
 
-            return RedirectToAction("FormattedDisplay",
-                new {result.ParsedCsvContent, fileUploadModel.File.FileName});
+            return RedirectToAction("FormattedDisplay", new { result.ParsedCsvContent, file.FileName });
         }
 
-        #endregion
-
-        #region [ Helpers ]
         private ActionResult HandleError(string errorMessage)
         {
             _logger.Error(errorMessage);
-            return RedirectToAction("Error", new {errorMessage});
+            return RedirectToAction("Error", new { errorMessage });
         }
-        #endregion
     }
 }

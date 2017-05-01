@@ -27,8 +27,9 @@ namespace Q4CsvParser.Core
         /// </summary>
         /// <param name="inputStream"></param>
         /// <param name="fileName"></param>
+        /// <param name="containsHeader"></param>
         /// <returns></returns>
-        public CsvHandleResult ParseCsvFile(Stream inputStream, string fileName)
+        public CsvHandleResult ParseCsvFile(Stream inputStream, string fileName, bool containsHeader)
         {
             var result = new CsvHandleResult();
 
@@ -53,7 +54,7 @@ namespace Q4CsvParser.Core
                 return result;
             }
 
-            var parsedFileContent = _parsingService.ParseCsv(fileContent);
+            var parsedFileContent = _parsingService.ParseCsv(fileContent, containsHeader);
             if (parsedFileContent == null)
             {
                 result.ErrorMessage = "Failed to parse file content";

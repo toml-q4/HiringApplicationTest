@@ -13,8 +13,9 @@ namespace Q4CsvParser.Core
         /// Accepts a string with the contents of the csv file in it and should return a parsed csv file.
         /// </summary>
         /// <param name="fileContent"></param>
+        /// <param name="containsHeader"></param>
         /// <returns></returns>
-        public CsvTable ParseCsv(string fileContent)
+        public CsvTable ParseCsv(string fileContent, bool containsHeader)
         {
             //TODO fill in your logic here
             throw new NotImplementedException();

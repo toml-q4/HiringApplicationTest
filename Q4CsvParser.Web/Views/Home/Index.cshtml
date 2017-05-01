@@ -4,10 +4,13 @@
 }
 
 @Html.Partial("~/Views/Home/_TaskDescription.cshtml")
+
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="csv-file">Please select to upload a CSV file</label>
-        <input name="file" type="file" id="csv-file">
+		<label for="csv-file">Please select to upload a CSV file</label>
+		<input name="file" type="file" id="csv-file">
+		<label for="header-row">Does the file contain a header?</label>
+		<input type="checkbox" name="header-row" id="header-row" />
     </div>
     <input class="btn btn-primary" type="submit" />
 </form>
