@@ -21,8 +21,14 @@ namespace Q4CsvParser.Core
         /// <returns>The file path in the appData folder the file was saved to</returns>
         public string StoreFile(Stream inputStream, string fileName)
         {
-            //TODO fill in your logic here
-            throw new System.NotImplementedException();
+            // configurable as per environment
+            string filePath = @"C:\inetpub\Q4Web-HiringApplicationTest-master\Q4CsvParser.Web\App_Data\uploads\" + fileName ;
+            using (var fileStream = File.Create(filePath))
+            {
+                inputStream.Seek(0, SeekOrigin.Begin);
+                inputStream.CopyTo(fileStream);
+            }
+            return filePath;
         }
 
         /// <summary>
@@ -33,8 +39,9 @@ namespace Q4CsvParser.Core
         /// <returns>The contents of the file in a string</returns>
         public string ReadFile(string filePath)
         {
-            //TODO fill in your logic here
-            throw new System.NotImplementedException();
+            var fileContent = File.ReadAllText(filePath);
+            return fileContent;
         }
     }
+    
 }

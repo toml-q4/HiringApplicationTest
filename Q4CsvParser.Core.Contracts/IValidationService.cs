@@ -1,4 +1,6 @@
-﻿namespace Q4CsvParser.Core.Contracts
+﻿using System.IO;
+
+namespace Q4CsvParser.Core.Contracts
 {
     public interface IValidationService
     {

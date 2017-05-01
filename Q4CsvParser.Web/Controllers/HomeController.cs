@@ -15,7 +15,7 @@ namespace Q4CsvParser.Web.Controllers
     /// Use your favourite dependency injection framework (i.e. Autofac, Ninject) to inject all the services.
     /// This project uses MVC5 so make sure you grab the right implementation. 
     /// Bonus Task:
-    /// Validate the input to the post function on the client side. You can use javascript or Razor syntax, 
+    /// Validate the input to the post function on the client side. You can use javascript/jquery or Razor syntax, 
     ///  but don't use any 3rd party code for this.
     /// </summary>
     public class HomeController : Controller
