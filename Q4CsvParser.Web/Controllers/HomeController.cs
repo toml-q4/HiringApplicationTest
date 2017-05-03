@@ -65,13 +65,11 @@ namespace Q4CsvParser.Web.Controllers
             if (fileUploadModel?.File == null || fileUploadModel.File.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File.InputStream, fileUploadModel.File.FileName,
-                fileUploadModel.ContainsHeader);
+            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File.InputStream, fileUploadModel.File.FileName, fileUploadModel.ContainsHeader);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
 
-            return RedirectToAction("FormattedDisplay",
-                new {result.ParsedCsvContent, fileUploadModel.File.FileName});
+            return RedirectToAction("FormattedDisplay", new {result.ParsedCsvContent, fileUploadModel.File.FileName});
         }
 
         #endregion

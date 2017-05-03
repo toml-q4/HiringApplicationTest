@@ -9,6 +9,7 @@
     /// </summary>
     public class ParsingServiceTest
     {
+        int i = 0;
         //TODO Unit test the ParsingService here
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Q4CsvParser.Core.Contracts;
+using System;
 
 namespace Q4CsvParser.Core
 {
@@ -21,8 +22,29 @@ namespace Q4CsvParser.Core
         /// <returns>The file path in the appData folder the file was saved to</returns>
         public string StoreFile(Stream inputStream, string fileName)
         {
-            //TODO fill in your logic here
-            throw new System.NotImplementedException();
+            string fileNamePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), fileName);
+
+            using (Stream file = File.Create(fileNamePath))
+            {
+                CopyStream(inputStream, file);
+            }
+
+            return fileNamePath;
+        }
+
+
+
+        /// <summary>
+        /// Copies the contents of input to output. Doesn't close either stream.
+        /// </summary>
+        public static void CopyStream(Stream input, Stream output)
+        {
+            byte[] buffer = new byte[8 * 1024];
+            int len;
+            while ((len = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, len);
+            }
         }
 
         /// <summary>
@@ -33,8 +55,9 @@ namespace Q4CsvParser.Core
         /// <returns>The contents of the file in a string</returns>
         public string ReadFile(string filePath)
         {
-            //TODO fill in your logic here
-            throw new System.NotImplementedException();
+
+            return System.IO.File.ReadAllText(filePath);
+
         }
     }
 }

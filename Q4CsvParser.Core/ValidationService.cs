@@ -15,8 +15,14 @@ namespace Q4CsvParser.Core
         /// <returns></returns>
         public bool IsCsvFile(string filename)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            if (filename.Contains(@".csv"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

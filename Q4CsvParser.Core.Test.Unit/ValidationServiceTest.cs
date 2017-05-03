@@ -9,6 +9,7 @@
     /// </summary>
     public class ValidationServiceTest
     {
+        int i = 0;
         //TODO unit test the ValidationService here
     }
 }

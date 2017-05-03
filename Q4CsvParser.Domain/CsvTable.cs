@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Web;
 
 namespace Q4CsvParser.Domain
 {
@@ -19,16 +20,22 @@ namespace Q4CsvParser.Domain
         /// <returns></returns>
         public override string ToString()
         {
-            var stringBuilder = new StringBuilder();
+             var stringBuilder = new StringBuilder();
 
-            if (HeaderRow != null)
-                stringBuilder.AppendLine(HeaderRow.ToString());
+             if (HeaderRow != null)
+                 stringBuilder.AppendLine(HeaderRow.ToString());
 
-            foreach (var row in Rows)
-            {
-                stringBuilder.AppendLine(row.ToString());
-            }
+             foreach (var row in Rows)
+             {
+                 stringBuilder.AppendLine(row.ToString());
+             }
+            
+            //HttpContext.Current.Response.Write(stringBuilder.ToString());
+            //HttpResponse.Write();
             return stringBuilder.ToString();
+            //return "this is just a test";
+
+
         }
     }
 }
