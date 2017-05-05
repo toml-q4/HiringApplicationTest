@@ -26,17 +26,16 @@ namespace Q4CsvParser.Web.Core
         /// Takes in an input HttpPostedFileBase and returns a parsed CsvTable object
         /// </summary>
         /// <param name="inputFile"></param>
-        /// <param name="fileName"></param>
         /// <param name="containsHeader"></param>
         /// <returns></returns>
-        public CsvHandleResult ParseCsvFile(HttpPostedFileBase inputFile, string fileName, bool containsHeader)
+        public CsvHandleResult ParseCsvFile(HttpPostedFileBase inputFile, bool containsHeader)
         {
             var result = new CsvHandleResult();
 
-            if (!_validationService.IsCsvFile(fileName))
+            if (!_validationService.IsCsvFile(inputFile.FileName))
             {
                 result.ErrorMessage =
-                    $"Selected file, {fileName}, does not have supported format CSV. Nothing has been uploaded";
+                    $"Selected file, {inputFile.FileName}, does not have supported format CSV. Nothing has been uploaded";
                 return result;
             }
 

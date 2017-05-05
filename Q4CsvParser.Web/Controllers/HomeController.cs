@@ -47,8 +47,7 @@ namespace Q4CsvParser.Web.Controllers
             if (fileUploadModel?.File == null || fileUploadModel.File.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File, fileUploadModel.File.FileName,
-                fileUploadModel.ContainsHeader);
+            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File, fileUploadModel.ContainsHeader);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
             
