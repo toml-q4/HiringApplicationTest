@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using System.Web;
 
-namespace Q4CsvParser.Core.Contracts
+namespace Q4CsvParser.Contracts
 {
     public interface IFileService
     {
@@ -8,9 +8,8 @@ namespace Q4CsvParser.Core.Contracts
         /// This file takes the inputStream and file name from the HttpPostedFileBase and save the file to the appData folder
         /// </summary>
         /// <param name="inputStream"></param>
-        /// <param name="fileName"></param>
         /// <returns>The file path in the appData folder the file was saved to</returns>
-        string StoreFile(Stream inputStream, string fileName);
+        string StoreFile(HttpPostedFileBase inputStream);
 
         /// <summary>
         /// This function takes in the filePath of a csv file stored in the app data folder and return the string content

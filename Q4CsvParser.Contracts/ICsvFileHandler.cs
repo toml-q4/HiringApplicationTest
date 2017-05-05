@@ -1,17 +1,17 @@
-﻿using System.IO;
+﻿using System.Web;
 using Q4CsvParser.Domain;
 
-namespace Q4CsvParser.Core.Contracts
+namespace Q4CsvParser.Contracts
 {
     public interface ICsvFileHandler
     {
         /// <summary>
         /// Takes in an input stream from HttpPostedFileBase and returns a parsed CsvTable object
         /// </summary>
-        /// <param name="inputStream"></param>
+        /// <param name="inputFile"></param>
         /// <param name="fileName"></param>
         /// <param name="containsHeader"></param>
         /// <returns></returns>
-        CsvHandleResult ParseCsvFile(Stream inputStream, string fileName, bool containsHeader);
+        CsvHandleResult ParseCsvFile(HttpPostedFileBase inputFile, string fileName, bool containsHeader);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Q4CsvParser.Core.Test.Unit
+﻿namespace Q4CsvParser.Test.Unit
 {
     /// <summary>
     /// This class should have content. 

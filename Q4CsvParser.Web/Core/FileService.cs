@@ -1,7 +1,8 @@
-﻿using System.IO;
-using Q4CsvParser.Core.Contracts;
+﻿using System;
+using System.Web;
+using Q4CsvParser.Contracts;
 
-namespace Q4CsvParser.Core
+namespace Q4CsvParser.Web.Core
 {
     /// <summary>
     /// This file does not need to be unit testable.
@@ -11,18 +12,17 @@ namespace Q4CsvParser.Core
     /// </summary>
     public class FileService : IFileService
     {
-        private const string UploadFilePath = "~/App_Data/uploads";
+        private const string UploadFilePath = "~/App_Data/uploads/";
 
         /// <summary>
-        /// This file takes the inputStream and file name from the HttpPostedFileBase and save the file to the appData folder
+        /// This file takes the file from the HttpPostedFileBase and saves the file to the appData folder
         /// </summary>
-        /// <param name="inputStream"></param>
-        /// <param name="fileName"></param>
+        /// <param name="file"></param>
         /// <returns>The file path in the appData folder the file was saved to</returns>
-        public string StoreFile(Stream inputStream, string fileName)
+        public string StoreFile(HttpPostedFileBase file)
         {
             //TODO fill in your logic here
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Q4CsvParser.Core
         public string ReadFile(string filePath)
         {
             //TODO fill in your logic here
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
