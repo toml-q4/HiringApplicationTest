@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using log4net;
-using Q4CsvParser.Core;
-using Q4CsvParser.Core.Contracts;
-using Q4CsvParser.Domain;
+using Q4CsvParser.Contracts;
+using Q4CsvParser.Web.Core;
 using Q4CsvParser.Web.Models;
+using FileService = Q4CsvParser.Web.Core.FileService;
 
 namespace Q4CsvParser.Web.Controllers
 {
@@ -40,22 +38,6 @@ namespace Q4CsvParser.Web.Controllers
             var model = new ErrorModel { ErrorMessage = errorMessage};
             return View(model);
         }
-
-        public ActionResult FormattedDisplay(CsvTable csvTable, string fileName)
-        {
-            if (csvTable?.Rows == null || !csvTable.Rows.Any())
-                return HandleError("File failed to parse");
-            if (string.IsNullOrWhiteSpace(fileName))
-                return HandleError("File name missing");
-
-            var model = new FormattedDisplayModel
-            {
-                OriginalFileName = fileName,
-                CsvTable = csvTable
-            };
-
-            return View(model);
-        }
         #endregion
 
         #region [ POSTs ]
@@ -65,13 +47,15 @@ namespace Q4CsvParser.Web.Controllers
             if (fileUploadModel?.File == null || fileUploadModel.File.ContentLength <= 0)
                 return HandleError("You need to click Choose File first, then Submit.");
 
-            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File.InputStream, fileUploadModel.File.FileName,
-                fileUploadModel.ContainsHeader);
+            var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File, fileUploadModel.ContainsHeader);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
-
-            return RedirectToAction("FormattedDisplay",
-                new {result.ParsedCsvContent, fileUploadModel.File.FileName});
+            
+            return View("FormattedDisplay", new FormattedDisplayModel
+            {
+                OriginalFileName = fileUploadModel.File.FileName,
+                CsvTable = result.ParsedCsvContent
+            });
         }
 
         #endregion

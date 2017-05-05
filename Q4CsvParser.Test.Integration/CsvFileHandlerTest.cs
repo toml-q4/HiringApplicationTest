@@ -1,4 +1,4 @@
-﻿namespace Q4CsvParser.Core.Test.Integration
+﻿namespace Q4CsvParser.Test.Integration
 {
     /// <summary>
     /// Bonus Task:

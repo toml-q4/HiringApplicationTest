@@ -1,7 +1,7 @@
 ﻿using System;
-using Q4CsvParser.Core.Contracts;
+using Q4CsvParser.Contracts;
 
-namespace Q4CsvParser.Core
+namespace Q4CsvParser.Web.Core
 {
     /// <summary>
     /// This file must be unit tested

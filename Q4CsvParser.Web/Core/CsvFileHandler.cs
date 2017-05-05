@@ -1,8 +1,8 @@
-﻿using System.IO;
-using Q4CsvParser.Core.Contracts;
+﻿using System.Web;
+using Q4CsvParser.Contracts;
 using Q4CsvParser.Domain;
 
-namespace Q4CsvParser.Core
+namespace Q4CsvParser.Web.Core
 {
     /// <summary>
     /// This file does not need to be unit tested. 
@@ -23,24 +23,23 @@ namespace Q4CsvParser.Core
         }
 
         /// <summary>
-        /// Takes in an input stream from HttpPostedFileBase and returns a parsed CsvTable object
+        /// Takes in an input HttpPostedFileBase and returns a parsed CsvTable object
         /// </summary>
-        /// <param name="inputStream"></param>
-        /// <param name="fileName"></param>
+        /// <param name="inputFile"></param>
         /// <param name="containsHeader"></param>
         /// <returns></returns>
-        public CsvHandleResult ParseCsvFile(Stream inputStream, string fileName, bool containsHeader)
+        public CsvHandleResult ParseCsvFile(HttpPostedFileBase inputFile, bool containsHeader)
         {
             var result = new CsvHandleResult();
 
-            if (!_validationService.IsCsvFile(fileName))
+            if (!_validationService.IsCsvFile(inputFile.FileName))
             {
                 result.ErrorMessage =
-                    $"Selected file, {fileName}, does not have supported format CSV. Nothing has been uploaded";
+                    $"Selected file, {inputFile.FileName}, does not have supported format CSV. Nothing has been uploaded";
                 return result;
             }
 
-            var uploadedFilePath = _fileService.StoreFile(inputStream, fileName);
+            var uploadedFilePath = _fileService.StoreFile(inputFile);
             if (string.IsNullOrWhiteSpace(uploadedFilePath))
             {
                 result.ErrorMessage = "File failed to save to server";
