@@ -48,7 +48,9 @@
     <Content Include="TestFiles\junk.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestFiles\sample.with.header.blank.lines.csv" />
+    <None Include="TestFiles\sample.with.header.blank.lines.csv">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="TestFiles\sample.with.header.csv" />
     <None Include="TestFiles\sample.with.header.missing.fields.csv" />
     <None Include="TestFiles\sample.without.header.3.rows.csv" />

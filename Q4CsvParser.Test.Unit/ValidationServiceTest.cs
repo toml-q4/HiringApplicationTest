@@ -1,4 +1,7 @@
-﻿namespace Q4CsvParser.Test.Unit
+﻿using System;
+using Q4CsvParser.Web.Core;
+
+namespace Q4CsvParser.Test.Unit
 {
     /// <summary>
     /// This class should have content. 
@@ -9,6 +12,23 @@
     /// </summary>
     public class ValidationServiceTest
     {
-        //TODO unit test the ValidationService here
+        string testFileName = "C:\\inetpub\\Q4Web-HiringApplicationTest-master\\Q4CsvParser.Test.Integration\\TestFiles\\sample.with.header.blank.lines.csv";
+        ValidationService ValidClass = new ValidationService();
+        public void isValidCsvFormat()
+        {
+            if (ValidClass.IsCsvFile(testFileName))
+            {
+                Console.WriteLine("The file is a .csv format and the file name is {0}", testFileName);
+
+            }
+            else
+            {
+                Console.WriteLine("The file is not a csv file");
+
+            }
+
+        }
+
+
     }
 }

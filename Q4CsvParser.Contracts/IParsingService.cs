@@ -10,6 +10,7 @@ namespace Q4CsvParser.Contracts
         /// <param name="fileContent"></param>
         /// <param name="containsHeader"></param>
         /// <returns></returns>
+       
         CsvTable ParseCsv(string fileContent, bool containsHeader);
     }
 }

@@ -6,6 +6,9 @@
     /// You may also use a mocking framework (i.e. Moq, RhinoMock)
     /// 
     /// If you've never done unit testing before, don't worry about this section and look to complete some of the bonus mark tasks
+    /// 
+    /// Full Path to test files
+   
     /// </summary>
     public class ParsingServiceTest
     {
