@@ -62,6 +62,7 @@ namespace Q4CsvParser.Web.Core
 
             result.Success = true;
             result.ParsedCsvContent = parsedFileContent;
+            
             return result;
         }
     }

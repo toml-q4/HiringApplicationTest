@@ -24,6 +24,7 @@ namespace Q4CsvParser.Web.Controllers
         public HomeController()
         {
             _csvFileHandler = new CsvFileHandler(new ParsingService(), new ValidationService(), new FileService());
+
             _logger = LogManager.GetLogger("MvcApplication");
         }
 

@@ -9,3 +9,26 @@
 
 @* TODO Fill in the logic to create a view here *@
 
+@if (Model.CsvTable.Rows.Count > 0)
+{
+
+    <table style="border:solid;border-width:1px;border-color:black;">
+
+        @foreach (Q4CsvParser.Domain.CsvRow csvR in Model.CsvTable.Rows)
+        {
+            <tr style="border:solid;border-width:1px;border-color:black;">
+                @foreach (Q4CsvParser.Domain.CsvColumn col in csvR.Columns)
+                {
+                    <td style="border:solid;border-width:1px;border-color:black;">@col.Value</td>
+                }
+            </tr>
+        }
+           
+    </table>
+
+}
+else
+{
+
+}
+

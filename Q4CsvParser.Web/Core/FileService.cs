@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web;
 using Q4CsvParser.Contracts;
+using System.IO;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Q4CsvParser.Web.Core
 {
@@ -22,7 +24,27 @@ namespace Q4CsvParser.Web.Core
         public string StoreFile(HttpPostedFileBase file)
         {
             //TODO fill in your logic here
-            throw new NotImplementedException();
+            // store file in app data folder 
+            string fileName = file.FileName;
+            string location = "";
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    location = Path.Combine(
+                            System.Web.HttpContext.Current.Server.MapPath(UploadFilePath), fileName);
+                    file.SaveAs(location);
+
+                }
+            }
+            catch(Exception eex)
+            {
+                location = "";
+            }
+           
+            
+            return location; 
         }
 
         /// <summary>
@@ -34,7 +56,33 @@ namespace Q4CsvParser.Web.Core
         public string ReadFile(string filePath)
         {
             //TODO fill in your logic here
-            throw new NotImplementedException();
+            string fileContent = "";
+            // read file 
+            // option 1 : split each line with , or use .net fucntionlaity : textfieldparser 
+            string[] fieldsContent = { };
+            using (TextFieldParser myParser = new TextFieldParser(filePath))
+            {
+
+                myParser.TextFieldType = FieldType.Delimited;
+                myParser.SetDelimiters(new string[] { "," });
+
+
+
+                // Skip the row with the column names header row 
+                // don't skip 
+             //   myParser.ReadLine();
+             fileContent =  myParser.ReadToEnd();
+            //    while (!myParser.EndOfData)
+            //    {
+            //        // Read current line fields, pointer moves to the next line.
+            //     fieldsContent   = myParser.ReadFields();
+            //        string strdate = fieldsContent[0];
+            //        string address = fieldsContent[1];
+            //    }
+            }
+            //// convert all fieldsTostring 
+            //fileContent = fieldsContent.ToString();
+            return fileContent; 
         }
     }
 }
