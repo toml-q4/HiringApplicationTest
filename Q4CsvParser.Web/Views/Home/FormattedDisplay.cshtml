@@ -8,4 +8,25 @@
 <h2>Data from <strong>@Model.OriginalFileName</strong></h2>
 
 @* TODO Fill in the logic to create a view here *@
+<table>
+    @if (Model.HasHeader())
+    {
+        <tr>
+            @foreach (var col in Model.CsvTable.HeaderRow.Columns)
+            {
+                <th>@col.Value</th>
+            }
+        </tr>
+    }
+    @foreach (var row in Model.CsvTable.Rows)
+    {        
+        <tr>
+            @foreach (var col in row.Columns)
+            {
+                <td>@col.Value</td>
+            }
+        </tr>
+    }
+</table>
+
 

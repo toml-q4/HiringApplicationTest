@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using Q4CsvParser.Contracts;
+using System.IO;
 
 namespace Q4CsvParser.Web.Core
 {
@@ -22,7 +23,11 @@ namespace Q4CsvParser.Web.Core
         public string StoreFile(HttpPostedFileBase file)
         {
             //TODO fill in your logic here
-            throw new NotImplementedException();
+            if (file == null)
+                return String.Empty;
+            string fileToSave = UploadFilePath + file.FileName;
+            file.SaveAs(HttpContext.Current.Server.MapPath(fileToSave));
+            return fileToSave;
         }
 
         /// <summary>
@@ -34,7 +39,10 @@ namespace Q4CsvParser.Web.Core
         public string ReadFile(string filePath)
         {
             //TODO fill in your logic here
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(filePath))
+                return String.Empty;
+            var fileContent = File.ReadAllText(HttpContext.Current.Server.MapPath(filePath));
+            return fileContent;
         }
     }
 }

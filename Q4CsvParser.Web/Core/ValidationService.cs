@@ -1,5 +1,6 @@
 ﻿using System;
 using Q4CsvParser.Contracts;
+using System.IO;
 
 namespace Q4CsvParser.Web.Core
 {
@@ -16,7 +17,15 @@ namespace Q4CsvParser.Web.Core
         public bool IsCsvFile(string filename)
         {
             //TODO fill in your logic here
-            throw new NotImplementedException();
+            var extension = Path.GetExtension(filename);
+            if(extension.ToLower()==".csv")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
