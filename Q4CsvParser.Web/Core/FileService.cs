@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web;
 using Q4CsvParser.Contracts;
 
@@ -12,7 +13,7 @@ namespace Q4CsvParser.Web.Core
     /// </summary>
     public class FileService : IFileService
     {
-        private const string UploadFilePath = "~/App_Data/uploads/";
+        private const string UploadFilePath = @"App_Data\uploads\";
 
         /// <summary>
         /// This file takes the file from the HttpPostedFileBase and saves the file to the appData folder
@@ -21,8 +22,20 @@ namespace Q4CsvParser.Web.Core
         /// <returns>The file path in the appData folder the file was saved to</returns>
         public string StoreFile(HttpPostedFileBase file)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            
+            try {
+
+                var path = AppDomain.CurrentDomain.BaseDirectory + UploadFilePath + file.FileName;
+
+                using (var fileStream = File.Create(path))
+                {
+                    file.InputStream.Seek(0, SeekOrigin.Begin);
+                    file.InputStream.CopyTo(fileStream);
+                    return path;
+                }
+            }
+            catch (Exception) {}
+            return null;
         }
 
         /// <summary>
@@ -33,8 +46,14 @@ namespace Q4CsvParser.Web.Core
         /// <returns>The contents of the file in a string</returns>
         public string ReadFile(string filePath)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            try {
+                var csvRows = File.ReadAllLines(filePath);
+                return string.Join(";", csvRows);
+            }
+            catch (Exception) {
+                return null;
+            }           
+            
         }
     }
 }

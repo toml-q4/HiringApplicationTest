@@ -50,7 +50,14 @@ namespace Q4CsvParser.Web.Controllers
             var result = _csvFileHandler.ParseCsvFile(fileUploadModel.File, fileUploadModel.ContainsHeader);
             if (!result.Success)
                 return HandleError(result.ErrorMessage);
-            
+
+            var x = new FormattedDisplayModel
+            {
+                OriginalFileName = fileUploadModel.File.FileName,
+                CsvTable = result.ParsedCsvContent
+            };
+
+
             return View("FormattedDisplay", new FormattedDisplayModel
             {
                 OriginalFileName = fileUploadModel.File.FileName,

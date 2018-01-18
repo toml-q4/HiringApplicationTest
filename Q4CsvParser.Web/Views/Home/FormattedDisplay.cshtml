@@ -7,5 +7,28 @@
 
 <h2>Data from <strong>@Model.OriginalFileName</strong></h2>
 
-@* TODO Fill in the logic to create a view here *@
+@if (Model != null)
+    {
+<table>
+    @*<thead>
+        <tr>
+            @foreach (var col in Model.CsvTable)
+            {
+                <th>@col.ColumnName</th>
+            }
+        </tr>
+    </thead>*@
+    <tbody>
+        @foreach (var row in Model.CsvTable.Rows)
+        {
+            <tr>
+                @foreach (var item in row)
+                {
+                    <td>@item</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+    }
 

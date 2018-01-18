@@ -1,5 +1,4 @@
-﻿using System;
-using Q4CsvParser.Contracts;
+﻿using Q4CsvParser.Contracts;
 
 namespace Q4CsvParser.Web.Core
 {
@@ -15,8 +14,10 @@ namespace Q4CsvParser.Web.Core
         /// <returns></returns>
         public bool IsCsvFile(string filename)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(filename) || !filename.EndsWith(".csv"))
+                return false;
+            else
+                return true;
         }
     }
 }
